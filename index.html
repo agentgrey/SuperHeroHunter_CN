@@ -4,6 +4,8 @@
 <head>
 <!-- title --> 
     <title>SuperHero Hunter</title>
+<!-- icon -->
+    <link rel="icon" href="./assets/superhero.svg" type="image/svg"/>
 <!-- added css -->
     <link rel="stylesheet" href="./style/styles.css">
 <!-- added fontawesome -->
@@ -12,7 +14,7 @@
 
 <body>
 <!-- background -->
-    <video autoplay muted loop id="myVideo">
+    <video autoplay muted loop id="myVideo" class="glow">
         <source src="./assets/space-to-view.mp4" type="video/mp4">
     </video>
 
@@ -20,24 +22,24 @@
     <div class="nav">
     <!-- left part => icon -->
         <left class="left">
-            <img src="assets/superhero.svg">
+            <img class="image" src="assets/superhero.svg">
         </left>    
     <!-- middle part => title-->
         <middle class="middle">
-            <p>SuperHero Hunter</p>
+            <p class="glow">SuperHero Hunter</p>
             
         </middle>
     <!-- right part => Favorites-->
         <right class="right">
-            <p>Favorites</p>
+            <p class="glow">Favorites</p>
         </right>
     </div>
 
 <!-- search option -->
     <div class="search">
         <div class="search-container">
-            <input class="searchbar" type="text" placeholder="Search">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <input class="searchbar" type="text" placeholder="Find your superhero here">
+            <i class="fa-solid fa-magnifying-glass icon"></i>
         </div>
     </div>
 
