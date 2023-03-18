@@ -38,26 +38,12 @@ body {
     font-family: Candara;
 }
 .middle {
-    font-size: 4rem;
+    font-size: 3rem;
     font-family: Ink Free;
     font-weight: 900;
     color: var(--mainColor);
     display: flex;
     justify-content: center;
-}
-
-/* search option */
-.search {
-    display: flex;
-    justify-content: center;
-}
-.searchbar {
-    width: 60vh;
-    height: 6.5vh;
-    border-radius: 25px;
-    border: none;
-    font-size: 16px;
-    padding: 20px;
 }
 
 /* search result container */
@@ -95,6 +81,7 @@ body {
 }
 .heart-icon {
     padding-top: 22px;
+    color: red;
 }
 
 
