@@ -25,6 +25,8 @@ body {
     color: var(--mainColor);
     display: flex;
     justify-content: space-between;
+    /* top: 0;
+    position: sticky; */
 }
 .left {
     padding: 2%;
@@ -43,6 +45,24 @@ body {
     color: var(--mainColor);
     display: flex;
     justify-content: center;
+}
+
+/* details */
+.container {
+    width: 90%;
+    margin: 3%;
+    padding: 2%;
+    background-color: rgba(255, 255, 255, 0.219);
+    display: flex;
+    font-size: 30px;
+}
+.poster {
+    display: flex;
+}
+.photo {
+    width: 60vh;
+    height: 50vh;
+    margin-right: 5%;
 }
 
 
