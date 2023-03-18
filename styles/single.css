@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+:root {
+    --mainColor: whitesmoke;
+    --cardColor: rgba(255, 253, 253, 0.281);
+}
+/* background video */
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -10;
+}
+
+/* navigation bar */
+.nav {
+    color: var(--mainColor);
+    display: flex;
+    justify-content: space-between;
+}
+.left {
+    padding: 2%;
+    font-size: 1.5rem;
+    font-family: Candara;
+}
+.right {
+    padding: 2%;
+    font-size: 1.5rem;
+    font-family: Candara;
+}
+.middle {
+    font-size: 3rem;
+    font-family: Ink Free;
+    font-weight: 900;
+    color: var(--mainColor);
+    display: flex;
+    justify-content: center;
+}
+
+
+/* styles for hover */
+.glow:hover {
+    cursor: pointer;
+    text-shadow: var(--mainColor) 0 0 10px;
+    transform: scale(1.05);
+}

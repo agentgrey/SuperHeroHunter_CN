@@ -110,11 +110,11 @@ body {
 }
 .icon:hover {
     cursor: pointer;
-    color: rgb(63, 62, 62);
-    /* transform: scale(1.1); */
+    transform: scale(1.1);
 }
 .card-name:hover {
     cursor: pointer;
     text-decoration: underline 1px;
-    color: black;
+    transform: scale(1.05);
+    /* color: black; */
 }
