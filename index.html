@@ -7,7 +7,7 @@
 <!-- icon -->
     <link rel="icon" href="./assets/superhero.svg" type="image/svg"/>
 <!-- added css -->
-    <link rel="stylesheet" href="./style/styles.css">
+    <link rel="stylesheet" href="./styles/style.css">
 <!-- added fontawesome -->
     <script src="https://kit.fontawesome.com/f383b6eabf.js" crossorigin="anonymous"></script>
 </head>
@@ -37,11 +37,24 @@
 
 <!-- search option -->
     <div class="search">
-        <div class="search-container">
-            <input class="searchbar" type="text" placeholder="Find your superhero here">
-            <i class="fa-solid fa-magnifying-glass icon"></i>
-        </div>
+        <input id="searchbar" class="searchbar" type="text" placeholder="Find your superhero here">
     </div>
+
+<!-- search results -->
+    <div class="container">
+    <!-- card  -->
+        <div class="card">
+            <img class="poster" src="assets/sample.png">
+            <div class="details">
+                <p class="card-name">Name</p>
+                <i class="heart-icon fa-regular fa-heart"></i>
+            </div>
+        </div>
+        
+    </div>
+
+<!-- adding javascript -->
+    <script rel="typescript" src=".scripts/script.js"></script>
 
 </body>
 

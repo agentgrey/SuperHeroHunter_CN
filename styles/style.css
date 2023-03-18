@@ -3,8 +3,12 @@ body {
     padding: 0;
     background-color: black;
 }
+::-webkit-scrollbar {
+    display: none;
+}
 :root {
     --mainColor: whitesmoke;
+    --cardColor: rgba(255, 253, 253, 0.281);
 }
 /* background video */
 #myVideo {
@@ -47,27 +51,51 @@ body {
     display: flex;
     justify-content: center;
 }
-.search-container {
+.searchbar {
     width: 60vh;
     height: 6.5vh;
-    display: flex;
-    background-color: var(--mainColor);
-    border-radius: 20px;
-}
-.fa-magnifying-glass {
-    padding: 6px;
-    font-size: 25px;
-}
-.searchbar {
-    width: 50vh;
-    height: 5.5vh;
-    margin-top: 0.5vh;
-    margin-left: 3vh;
-    font-size: 1rem;
+    border-radius: 25px;
     border: none;
-    background-color: var(--mainColor);
+    font-size: 16px;
+    padding: 20px;
 }
 
+/* search result container */
+.container {
+    width: 90%;
+    margin: 3% 5%;
+    display: grid;
+    grid-template-columns: repeat(4,200px);
+    justify-content: space-evenly;
+}
+.card {
+    width: 30vh;
+    height: 40vh;
+    background-color: var(--cardColor);
+    margin-top: 50px;
+    padding-top: 2vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+.poster {
+    width: 30vh;
+    height: 28vh;
+    border: 5px solid darkgrey;
+    align-self: center;
+}
+.details {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: Candara;
+}
+.heart-icon {
+    padding-top: 22px;
+}
 
 
 
@@ -85,4 +113,9 @@ body {
     cursor: pointer;
     color: rgb(63, 62, 62);
     /* transform: scale(1.1); */
+}
+.card-name:hover {
+    cursor: pointer;
+    text-decoration: underline 1px;
+    color: black;
 }
