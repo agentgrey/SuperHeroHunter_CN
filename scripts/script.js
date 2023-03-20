@@ -33,11 +33,7 @@ async function searchHeros(heroname) {
 function showResults(d) {
     // console.log("i am in showResults");
     res = d.data.results;
-<<<<<<< HEAD
-    // console.log(res);
-=======
 //     console.log(res);
->>>>>>> 4f3ca5d94d16bf8145c3f4801a542e10f63938ce
 
     let html=``;
     if(res) {
