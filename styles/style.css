@@ -117,7 +117,7 @@ body {
     display:inherit;
     color:red;
 }
-.card-name:hover {
+.cardName:hover {
     cursor: pointer;
     text-decoration: underline 1px;
     transform: scale(1.05);

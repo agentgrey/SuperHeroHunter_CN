@@ -9,4 +9,4 @@ var photo = document.getElementById("photo");
 
 title.innerHTML =  heroInfo.name;
 photo.setAttribute("src", heroInfo.img);
-// console.log(heroInfo);
+console.log(heroInfo);
