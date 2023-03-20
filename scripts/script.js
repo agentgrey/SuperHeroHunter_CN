@@ -57,12 +57,10 @@ function showResults(d) {
                         <span>${element.stories.available}</span>
                         <span>${element.thumbnail.path+'/portrait_uncanny.' + element.thumbnail.extension}</span>
                         <span>${element.id}</span>
-                        <span>${element.thumbnail.path+'/landscape_incredible.' + element.thumbnail.extension}</span>
-                        <span>${element.thumbnail.path+'/standard_fantastic.' + element.thumbnail.extension}</span>
                     </div>                
                     <div class="icon">
                         <i class="${favouritesCharacterIDs.has(`${element.id}`) ? "heart-icon fa-solid fa-heart" 
-                        :"heart-icon fa-regular fa-heart fav-icon"}" ></i>
+                        :"heart-icon fa-regular fa-heart"}" ></i>
                     </div>
                 </div>
                 </div>
@@ -80,7 +78,7 @@ function showResults(d) {
 document.addEventListener('click', e => {
     let target = e.target;
 
-// If user clicks on heart, add to favorites
+// If user clicks on heart, add/remove to favorites
     if(target.classList.contains("heart-icon")) {
         addToFavorites(target);
     }
@@ -96,11 +94,17 @@ document.addEventListener('click', e => {
 function addToFavorites(c) {
     let heroInfo = {
         name: c.parentElement.parentElement.children[1].children[0].innerHTML,
+        desc: c.parentElement.parentElement.children[1].children[1].innerHTML, 
+        comics: c.parentElement.parentElement.children[1].children[2].innerHTML, 
+        series: c.parentElement.parentElement.children[1].children[3].innerHTML, 
+        stories: c.parentElement.parentElement.children[1].children[4].innerHTML,
+        img: c.parentElement.parentElement.children[1].children[5].innerHTML,
         id: c.parentElement.parentElement.children[1].children[6].innerHTML
     }
-
 // If hero is not added to favorites, add to favorites
-    if(c.getAttribute('class')=='heart-icon fa-regular fa-heart') {
+    if(c.getAttribute('class')=='heart-icon fa-regular fa-heart') {        
+        
+
         let favouritesArray = localStorage.getItem("favouriteCharacters");
         if (favouritesArray == null) {
             favouritesArray = [];
@@ -147,7 +151,12 @@ function openSinglePage(c) {
 // When user clicks on the name, the info page is opened that fetches the heroInfo and displays the data 
 
     let heroInfo = {
-        name: c.innerHTML, desc: c.parentElement.children[1].children[1].innerHTML, comic: c.parentElement.children[1].children[2].innerHTML, series: c.parentElement.children[1].children[3].innerHTML, stories: c.parentElement.children[1].children[4].innerHTML, img: c.parentElement.children[1].children[5].innerHTML
+        name: c.innerHTML, desc: c.parentElement.children[1].children[1].innerHTML, 
+        comic: c.parentElement.children[1].children[2].innerHTML, 
+        series: c.parentElement.children[1].children[3].innerHTML, 
+        stories: c.parentElement.children[1].children[4].innerHTML, 
+        img: c.parentElement.children[1].children[5].innerHTML,
+        id: c.parentElement.children[1].children[6].innerHTML
     }
 // Add to local storage
     localStorage.setItem("heroInfo", JSON.stringify(heroInfo));

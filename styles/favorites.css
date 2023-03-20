@@ -47,6 +47,13 @@ body {
 }
 
 /* search result container */
+#empty-fav {
+    font-size: 20px;
+    font-family: Candara;
+    color: var(--mainColor);
+    display: flex;
+    justify-content: center;
+}
 .container {
     width: 90%;
     margin: 3% 5%;
@@ -55,9 +62,10 @@ body {
     justify-content: space-evenly;
 }
 .card {
-    width: 30vh;
-    height: 40vh;
+    width: 32vh;
+    height: 45vh;
     background-color: var(--cardColor);
+    border: 1px solid white;
     margin-top: 50px;
     padding-top: 2vh;
     padding-left: 2vh;
@@ -68,7 +76,7 @@ body {
 .poster {
     width: 30vh;
     height: 28vh;
-    border: 5px solid darkgrey;
+    border: 2px solid white;
     align-self: center;
 }
 .details {
@@ -99,7 +107,7 @@ body {
     cursor: pointer;
     transform: scale(1.1);
 }
-.card-name:hover {
+.cardName:hover {
     cursor: pointer;
     text-decoration: underline 1px;
     transform: scale(1.05);

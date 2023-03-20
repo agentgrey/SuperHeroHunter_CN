@@ -1,4 +1,4 @@
-console.log("i am in single.js")
+// console.log("i am in single.js")
 
 let heroInfo = JSON.parse(localStorage.getItem("heroInfo"));
 
