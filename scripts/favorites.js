@@ -99,7 +99,13 @@ function openSinglePage(c) {
 // When user clicks on the name, the info page is opened that fetches the heroInfo and displays the data 
 
     let heroInfo = {
-        name: c.innerHTML, desc: c.parentElement.children[1].children[1].innerHTML, comic: c.parentElement.children[1].children[2].innerHTML, series: c.parentElement.children[1].children[3].innerHTML, stories: c.parentElement.children[1].children[4].innerHTML, img: c.parentElement.children[1].children[5].innerHTML
+        name: c.innerHTML, 
+        desc: c.parentElement.children[1].children[1].innerHTML,
+         comic: c.parentElement.children[1].children[2].innerHTML, 
+         series: c.parentElement.children[1].children[3].innerHTML, 
+         stories: c.parentElement.children[1].children[4].innerHTML,
+          img: c.parentElement.children[1].children[5].innerHTML,
+          id: c.parentElement.children[1].children[6].innerHTML
     }
 // Add to local storage
     localStorage.setItem("heroInfo", JSON.stringify(heroInfo));
