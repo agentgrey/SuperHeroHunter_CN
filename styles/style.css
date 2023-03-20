@@ -97,6 +97,9 @@ body {
 .heart-icon {
     padding-top: 22px;
 }
+.fa-solid {
+    color: red;
+}
 
 
 /* styles for hover */
@@ -108,14 +111,6 @@ body {
 .image:hover {
     cursor: pointer;
     transform: scale(1.1);
-}
-.icon:hover .fa-regular,
-.icon .fa-solid {
-    display: none;
-}
-.icon:hover .fa-solid {
-    display:inherit;
-    color:red;
 }
 .cardName:hover {
     cursor: pointer;

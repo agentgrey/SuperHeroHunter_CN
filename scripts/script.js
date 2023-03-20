@@ -1,17 +1,15 @@
-// console.log("script.js working");
 
-// variables created from index.html
+// Variables created from index.html
 var searchBar = document.getElementById("searchbar");
 var searchResults = document.getElementById("searchresults");
 
-// event listener for searchbar
+// Event listener for searchbar
 searchBar.addEventListener("input", () => searchHeros(searchBar.value));
 
-// function for API call
+// Function for API call
 async function searchHeros(heroname) {
-    console.log("i am in searchHeros " +heroname); 
 
-// if input is non empty
+// If input is non empty
     if(heroname.length > 0) {
         let url="https://gateway.marvel.com/v1/public/characters?nameStartsWith="+heroname+"&limit=8&ts=1&apikey=479af95fea303989d02e4a22757147e7&hash=b837dd71ea30a412d884f205f4da646f";
 
@@ -22,20 +20,28 @@ async function searchHeros(heroname) {
                         showResults(data);
                     });;
     } 
-// if input is empty
+// If input is empty
     else {
-        console.log("empty");
         searchResults.innerHTML = "";
     }
 }
 
-// function for displaying search results
+// Function for displaying search results
 function showResults(d) {
-    // console.log("i am in showResults");
-    res = d.data.results;
-//     console.log(res);
 
+    let favouritesCharacterIDs = localStorage.getItem("favouritesCharacterIDs");
+     if(favouritesCharacterIDs == null){
+// If we did't got the favouritesCharacterIDs then we iniitalize it with empty map
+          favouritesCharacterIDs = new Map();
+     }
+     else if(favouritesCharacterIDs != null){
+// If the we got the favouritesCharacterIDs in localStorage then parsing it and converting it to map
+          favouritesCharacterIDs = new Map(JSON.parse(localStorage.getItem("favouritesCharacterIDs")));
+     }
+
+    res = d.data.results;
     let html=``;
+
     if(res) {
         html = res.map(element => {
             return `
@@ -55,22 +61,18 @@ function showResults(d) {
                         <span>${element.thumbnail.path+'/standard_fantastic.' + element.thumbnail.extension}</span>
                     </div>                
                     <div class="icon">
-                        <i class="heart-icon fa-regular fa-heart"></i>
-                        <i class="heart-icon fa-solid fa-heart"></i>
+                        <i class="${favouritesCharacterIDs.has(`${element.id}`) ? "heart-icon fa-solid fa-heart" 
+                        :"heart-icon fa-regular fa-heart fav-icon"}" ></i>
                     </div>
                 </div>
                 </div>
             `
         }).join('');
         searchResults.innerHTML = html;
-    } else {
-        searchResults.innerHTML = "";
-    }
-
-// if searchBar is empty then show nothing in searchResults
-    if(searchBar.value.length==0) {
-        console.log("empty in searchResults")
-        searchResults.innerHTML = "";
+    } 
+// No result found
+    else {
+        searchResults.innerHTML = "No results found";
     }
 }
 
@@ -78,21 +80,78 @@ function showResults(d) {
 document.addEventListener('click', e => {
     let target = e.target;
 
+// If user clicks on heart, add to favorites
+    if(target.classList.contains("heart-icon")) {
+        addToFavorites(target);
+    }
+
+// If user clicks on the name, open single page
     if(target.classList.contains("cardName")) {
         openSinglePage(target);
         window.open("./single.html", "_blank");
     }
 })
 
+// Function which adds and removes the item to favorites list
+function addToFavorites(c) {
+    let heroInfo = {
+        name: c.parentElement.parentElement.children[1].children[0].innerHTML,
+        id: c.parentElement.parentElement.children[1].children[6].innerHTML
+    }
+
+// If hero is not added to favorites, add to favorites
+    if(c.getAttribute('class')=='heart-icon fa-regular fa-heart') {
+        let favouritesArray = localStorage.getItem("favouriteCharacters");
+        if (favouritesArray == null) {
+            favouritesArray = [];
+        } else {
+            favouritesArray = JSON.parse(localStorage.getItem("favouriteCharacters"));
+        }
+
+        let favouritesCharacterIDs = localStorage.getItem("favouritesCharacterIDs");
+        if (favouritesCharacterIDs == null) {
+            favouritesCharacterIDs = new Map();
+        } else {
+            favouritesCharacterIDs = new Map(JSON.parse(localStorage.getItem("favouritesCharacterIDs")));
+        }
+
+        favouritesCharacterIDs.set(heroInfo.id, true);   
+        favouritesArray.push(heroInfo);
+        localStorage.setItem("favouritesCharacterIDs", JSON.stringify([...favouritesCharacterIDs]));
+        localStorage.setItem("favouriteCharacters", JSON.stringify(favouritesArray));
+
+        c.setAttribute('class', 'heart-icon fa-solid fa-heart');
+    }   
+// If hero is already in favoritets, remove from favorites
+    else {
+        let favouritesArray = JSON.parse(localStorage.getItem("favouriteCharacters"));
+        let favouritesCharacterIDs = new Map(JSON.parse(localStorage.getItem("favouritesCharacterIDs")));
+        let newFavouritesArray = [];
+        favouritesCharacterIDs.delete(`${heroInfo.id}`);
+        favouritesArray.forEach((favourite) => {
+            if(heroInfo.id != favourite.id){
+                newFavouritesArray.push(favourite);
+            }
+        });
+
+        localStorage.setItem("favouriteCharacters",JSON.stringify(newFavouritesArray));
+        localStorage.setItem("favouritesCharacterIDs", JSON.stringify([...favouritesCharacterIDs]));
+          
+        c.setAttribute('class', 'heart-icon fa-regular fa-heart');
+    }
+}
+
 // Function which stores the info object of character for which user want to see the info 
 function openSinglePage(c) {
 // This function basically stores the data of character in localStorage.
-// When user clicks on the name, the info page is opened that fetches the heroInfo and displays the data  
-console.log("in openSinglePage");
-// console.log(c);
-     let heroInfo = {
-         name: c.innerHTML, desc: c.parentElement.children[1].children[1].innerHTML, comic: c.parentElement.children[1].children[2].innerHTML, series: c.parentElement.children[1].children[3].innerHTML, stories: c.parentElement.children[1].children[4].innerHTML, img: c.parentElement.children[1].children[5].innerHTML
-     }
-    // console.log(heroInfo);
-     localStorage.setItem("heroInfo", JSON.stringify(heroInfo));
+// When user clicks on the name, the info page is opened that fetches the heroInfo and displays the data 
+
+    let heroInfo = {
+        name: c.innerHTML, desc: c.parentElement.children[1].children[1].innerHTML, comic: c.parentElement.children[1].children[2].innerHTML, series: c.parentElement.children[1].children[3].innerHTML, stories: c.parentElement.children[1].children[4].innerHTML, img: c.parentElement.children[1].children[5].innerHTML
+    }
+// Add to local storage
+    localStorage.setItem("heroInfo", JSON.stringify(heroInfo));
 }
+
+
+
