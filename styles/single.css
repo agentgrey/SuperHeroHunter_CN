@@ -92,6 +92,10 @@ body {
     font-family: Candara;
     color: white;
 }
+#icon {
+    position: fixed;
+    translate: 1105px;
+}
 .fa-solid {
     color: red;
 }
