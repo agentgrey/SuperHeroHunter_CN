@@ -8,7 +8,7 @@ body {
 }
 :root {
     --mainColor: whitesmoke;
-    --cardColor: rgba(255, 253, 253, 0.281);
+    --cardColor:rgba(255, 255, 255, 0.281);
 }
 /* background video */
 #myVideo {
@@ -36,6 +36,7 @@ body {
     padding: 2%;
     font-size: 1.5rem;
     font-family: Candara;
+    font-weight: 600;
 }
 .middle {
     font-size: 4rem;
@@ -72,30 +73,32 @@ body {
     width: 32vh;
     height: 45vh;
     background-color: var(--cardColor);
-    border: 1px solid white;
+    border: 1px solid goldenrod;
     margin-top: 50px;
     padding-top: 2vh;
     padding-left: 2vh;
     padding-right: 2vh;
     display: flex;
     flex-direction: column;
+    box-shadow:goldenrod 3px 3px 10px;
 }
 .poster {
     width: 30vh;
     height: 28vh;
-    border: 2px solid white;
+    border: 2px double goldenrod;
     align-self: center;
 }
 .details {
     display: flex;
     justify-content: space-between;
-    color: white;
+    color: goldenrod;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 700;
     font-family: Candara;
 }
 .heart-icon {
     padding-top: 22px;
+    color: white;
 }
 .fa-solid {
     color: red;
@@ -117,4 +120,7 @@ body {
     text-decoration: underline 1px;
     transform: scale(1.05);
     /* color: black; */
+}
+.heart-icon:hover {
+    text-shadow: var(--mainColor) 0 0 10px;
 }

@@ -8,7 +8,7 @@ body {
 }
 :root {
     --mainColor: whitesmoke;
-    --cardColor: rgba(255, 253, 253, 0.281);
+    --cardColor: rgba(255, 255, 255, 0.281);
 }
 /* background video */
 #myVideo {
@@ -32,11 +32,13 @@ body {
     padding: 2%;
     font-size: 1.5rem;
     font-family: Candara;
+    font-weight: 600;
 }
 .right {
     padding: 2%;
     font-size: 1.5rem;
     font-family: Candara;
+    font-weight: 600;
 }
 .middle {
     font-size: 3rem;
@@ -108,4 +110,7 @@ body {
     cursor: pointer;
     text-shadow: var(--mainColor) 0 0 10px;
     transform: scale(1.05);
+}
+.heart-icon:hover {
+    text-shadow: var(--mainColor) 0 0 10px;
 }
